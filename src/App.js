@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Button from "./components/Button";
+import MainLayout from "./layouts/MainLayout";
+import Flex from "./components/containers/Flex";
+import { employeesData } from "./data";
+import Table from "./components/Table";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainLayout>
+      <h1>Employee Management Software</h1>
+      <Flex gap="10px">
+        {/* Passando os elementos via Children */}
+        <Button variant="primary">Add Employee</Button>
+        <Button>Logout</Button>
+        </Flex>
+      {/* Passando os elementos via props */}
+      <Table employeesData={employeesData} />
+    </MainLayout>
   );
 }
 
