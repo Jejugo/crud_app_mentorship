@@ -1,19 +1,13 @@
 import Button from "../Button";
 import Flex from "../containers/Flex";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
+import EditEmployee from "../EditEmployee";
+import TableRow from "./TableRow";
+import * as S from "./Table.styles"
 
-const StyledTable = styled.table`
-  tr:nth-child(even) {
-    background-color: #eee;
-  }
-  width: 80vw;
-  text-align: center;
-`;
-
-export default function Table( {employeesData} ){
-
+export default function Table({employeesData}){
     return(
-        <StyledTable>
+        <S.StyledTable>
             <tr>
                 <th>No.</th>
                 <th>First Name</th>
@@ -25,35 +19,10 @@ export default function Table( {employeesData} ){
             </tr>
             { 
               employeesData.map((item) => (
-                <tr>
-                    <td>
-                        {item.id}
-                    </td>
-                    <td>
-                        {item.firstName}
-                    </td>
-                    <td>
-                        {item.lastName}
-                    </td>
-                    <td>
-                        {item.email}
-                    </td>
-                    <td>
-                        {item.salary}
-                    </td>
-                    <td>
-                        {item.date}
-                    </td>
-                    <td>
-                        <Flex gap="10px" justifyContent="center">
-                            <Button>Edit</Button>
-                            <Button>Delete</Button>
-                        </Flex>
-                    </td>
-                </tr>
+                <TableRow item={item}/>
               )) 
             }
             
-        </StyledTable>
+        </S.StyledTable>
     )
 }

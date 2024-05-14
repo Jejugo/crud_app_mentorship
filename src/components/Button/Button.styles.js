@@ -14,6 +14,8 @@ export const Button = styled.button`
         return `background-color: blue; color: white`;
       case "secondary":
         return `background-color: green`;
+      case "delete":
+        return `background-color: red`;
       case "none":
         return `border: 1px solid black`;
       default:
