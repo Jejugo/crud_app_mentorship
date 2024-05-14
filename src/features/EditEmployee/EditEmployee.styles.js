@@ -1,13 +1,13 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const StyledEditEmployee = styled.div`
   width: 500px;
-  height: 250px;
+  height: 350px;
   color: blue;
-  background-color: gray;
+  background-color: #eee;
   display: block;
   position: absolute;
   border-radius: 10px;
-  top: 25%;
+  top: 10%;
   left: 25%;
 `;

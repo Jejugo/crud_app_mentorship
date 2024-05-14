@@ -1,34 +1,25 @@
-import React, { useState } from 'react';
+import Button from "../../Button";
+import Flex from "../../containers/Flex";
 
-const TableRow = ({ item }) => {
-  console.log('item', item);
+const TableRow = ({ item, onPrimaryAction, onSecondaryAction }) => {
 
-  const [showEdit, setShowEdit] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
 
   return (
-    <tr key={item.id}>
+    <tr>
       <td>{item.id}</td>
-      <td>{item.firstName}</td>
+      <td style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "100px", padding: '10px'}}>{item.firstName}</td>
       <td>{item.lastName}</td>
       <td>{item.email}</td>
       <td>{item.salary}</td>
       <td>{item.date}</td>
       <td>
         <Flex gap="10px" justifyContent="center">
-          <Button onClick={() => setShowEdit((prevState) => !prevState)}>
+          <Button onClick={() => onPrimaryAction(item)}>
             Edit
           </Button>
-          {showEdit && (
-            <EditEmployee
-              showEdit={showEdit}
-              employeeData={item}
-            />
-          )}
-          <Button onClick={() => setHandleDelete((prevState) => !prevState)}>
+          <Button onClick={() => onSecondaryAction(item)}>
             Delete
           </Button>
-          {handleDelete && <deleteEmployee handleDelete={handleDelete} />}
         </Flex>
       </td>
     </tr>
