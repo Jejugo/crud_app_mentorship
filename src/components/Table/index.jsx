@@ -1,11 +1,8 @@
-import Button from "../Button";
-import Flex from "../containers/Flex";
 import { useEffect, useState } from "react";
-import EditEmployee from "../EditEmployee";
 import TableRow from "./TableRow";
 import * as S from "./Table.styles"
 
-export default function Table({employeesData}){
+export default function Table({employeesData, setEmployeesData}){
     return(
         <S.StyledTable>
             <tr>
@@ -19,7 +16,7 @@ export default function Table({employeesData}){
             </tr>
             { 
               employeesData.map((item) => (
-                <TableRow item={item}/>
+                <TableRow item={item} setEmployeesData={setEmployeesData}/>
               )) 
             }
             

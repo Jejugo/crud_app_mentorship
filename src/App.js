@@ -2,10 +2,13 @@ import "./App.css";
 import Button from "./components/Button";
 import MainLayout from "./layouts/MainLayout";
 import Flex from "./components/containers/Flex";
-import { employeesData } from "./data";
+import { employees } from "./data";
 import Table from "./components/Table";
+import { useState } from "react";
 
 function App() {
+  const[employeesData, setEmployeesData] = useState(employees)
+
   return (
     <MainLayout>
       <h1>Employee Management Software</h1>
@@ -15,7 +18,7 @@ function App() {
         <Button>Logout</Button>
         </Flex>
       {/* Passando os elementos via props */}
-      <Table employeesData={employeesData} />
+      <Table employeesData={employeesData} setEmployeesData={setEmployeesData}/>
     </MainLayout>
   );
 }

@@ -1,12 +1,16 @@
+import Button from "../../Button";
+import Flex from "../../containers/Flex";
+import EditEmployee from "../../EditEmployee";
 import React, { useState } from 'react';
 
-const TableRow = ({ item }) => {
+const TableRow = ({ item, setEmployeesData }) => {
   console.log('item', item);
 
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
 
   return (
+    <>
     <tr key={item.id}>
       <td>{item.id}</td>
       <td>{item.firstName}</td>
@@ -19,19 +23,22 @@ const TableRow = ({ item }) => {
           <Button onClick={() => setShowEdit((prevState) => !prevState)}>
             Edit
           </Button>
-          {showEdit && (
-            <EditEmployee
-              showEdit={showEdit}
-              employeeData={item}
-            />
-          )}
-          <Button onClick={() => setHandleDelete((prevState) => !prevState)}>
+          
+          <Button onClick={() => setShowDelete((prevState) => !prevState)}>
             Delete
           </Button>
-          {handleDelete && <deleteEmployee handleDelete={handleDelete} />}
+          {showDelete && <deleteEmployee showDelete={showDelete} />}
         </Flex>
       </td>
     </tr>
+    {showEdit && (
+        <EditEmployee
+          setShowEdit={setShowEdit}
+          employeeData={item}
+          setEmployeesData={setEmployeesData}
+        />
+      )}
+      </>
   );
 }
 
