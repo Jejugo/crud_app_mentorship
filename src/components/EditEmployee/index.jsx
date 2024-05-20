@@ -1,13 +1,12 @@
 import React from 'react'
 import * as S from './EditEmployee.styles'
 import { useState } from 'react'
-export default function EditEmployee( {setShowEdit, employeeData, setEmployeesData} ) {
+export default function EditEmployee( {onClose, employeeData, setEmployeesData} ) {
   const [employeeFirstName, setEmployeeFirstName] = useState(employeeData.firstName);
   const [employeeLastName, setEmployeeLastName] = useState(employeeData.lastName);
   const [employeeEmail, setEmployeeEmail] = useState(employeeData.email);
   const [employeeSalary, setEmployeeSalary] = useState(employeeData.salary);
   const [employeeDate, setEmployeeDate] = useState(employeeData.date);
-
   const saveData = (e) => {
     e.preventDefault();
     const employeeId = employeeData.id
@@ -70,9 +69,10 @@ export default function EditEmployee( {setShowEdit, employeeData, setEmployeesDa
             onChange={(e) => setEmployeeDate(e.target.value)}
           />
         </S.StyledContentRow>
-      <button onClick={() => setShowEdit(false)}>Cancel</button>
+      <button onClick={() => onClose()}>Cancel</button>
       <button type="submit">Save</button>
       </S.StyledContent>
     </S.StyledEditEmployee>
-  );
+);
+ 
 }

@@ -1,13 +1,8 @@
 import Button from "../../Button";
 import Flex from "../../containers/Flex";
-import EditEmployee from "../../EditEmployee";
 import React, { useState } from 'react';
 
-const TableRow = ({ item, setEmployeesData }) => {
-  console.log('item', item);
-
-  const [showEdit, setShowEdit] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
+const TableRow = ({ item, setEmployeesData, onEditClick }) => {
 
   return (
     <>
@@ -20,24 +15,17 @@ const TableRow = ({ item, setEmployeesData }) => {
       <td>{item.date}</td>
       <td>
         <Flex gap="10px" justifyContent="center">
-          <Button onClick={() => setShowEdit((prevState) => !prevState)}>
+          <Button onClick={() => onEditClick(item)}>
             Edit
           </Button>
           
-          <Button onClick={() => setShowDelete((prevState) => !prevState)}>
+          {/* <Button onClick={() => setShowDelete((prevState) => !prevState)}>
             Delete
           </Button>
-          {showDelete && <deleteEmployee showDelete={showDelete} />}
+          {showDelete && <deleteEmployee showDelete={showDelete}/>} */}
         </Flex>
       </td>
     </tr>
-    {showEdit && (
-        <EditEmployee
-          setShowEdit={setShowEdit}
-          employeeData={item}
-          setEmployeesData={setEmployeesData}
-        />
-      )}
       </>
   );
 }
